@@ -81,11 +81,14 @@ export const AudioElement = {
         {...element.props}
         time={time}
         clipStart={element.s}
+        clipEnd={element.e}
         trimStart={trimStart}
       />
     );
     yield* waitFor(Math.max(0, element.e - element.s));
-    yield elementRef().play(false);
+    yield elementRef().pause();
     yield elementRef().remove();
+    // Ensure pooled HTMLAudioElement is released/stopped (remove() doesn't dispose()).
+    yield elementRef().dispose();
   },
 };

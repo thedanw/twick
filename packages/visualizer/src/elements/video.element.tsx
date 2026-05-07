@@ -242,6 +242,7 @@ export const VideoElement = {
           {...element.props}
           time={time}
           clipStart={element.s}
+          clipEnd={element.e}
           trimStart={trimStart}
         />
       </Rect>
@@ -272,8 +273,10 @@ export const VideoElement = {
         }),
         waitFor(Math.max(0, element.e - element.s))
       );
-      yield frameElementRef().play(false);
+      yield frameElementRef().pause();
       yield frameElementRef().remove();
+      // Ensure pooled HTMLVideoElement is released/stopped (remove() doesn't dispose()).
+      yield frameElementRef().dispose();
       yield frameContainerRef().remove();
     }
   },

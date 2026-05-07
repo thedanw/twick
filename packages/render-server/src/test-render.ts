@@ -28,76 +28,85 @@ const exampleProject = {
       height: 1280,
       fps: 30,
     },
-      "tracks": [
-          {
-              "id": "t-sample",
-              "name": "sample",
-              "type": "element",
-              "props": {},
-              "elements": [
-                  {
-                      "id": "e-sample",
-                      "trackId": "t-sample",
-                      "type": "text",
-                      "name": "sample",
-                      "s": 0,
-                      "e": 5,
-                      "props": {
-                          "text": "Twick SDK",
-                          "fill": "#FFFFFF"
-                      }
+    "tracks": [
+      {
+          "id": "t-sample",
+          "name": "sample",
+          "type": "element",
+          "props": {},
+          "elements": [
+              {
+                  "id": "e-sample",
+                  "trackId": "t-sample",
+                  "type": "text",
+                  "name": "sample",
+                  "s": 0,
+                  "e": 5,
+                  "props": {
+                      "text": "Twick SDK",
+                      "fill": "#FFFFFF"
                   }
-              ]
-          },
-          {
-              "id": "t-948a8e683ebb",
-              "name": "Track_1772121198607",
-              "type": "element",
-              "props": {},
-              "elements": [
-                  {
-                      "id": "e-cc0401034d3e",
-                      "trackId": "t-948a8e683ebb",
-                      "type": "image",
-                      "s": 0,
-                      "e": 3,
-                      "props": {
-                          "src": "https://images.pexels.com/photos/358457/pexels-photo-358457.jpeg",
-                          "mediaFilter": "none"
-                      },
-                      "frame": {
-                          "size": [
-                              720,
-                              1080.2700675168792
-                          ],
-                          "x": 0,
-                          "y": 0
-                      },
-                      "frameEffects": [],
-                      "objectFit": "cover"
+              }
+          ]
+      },
+      {
+          "id": "t-948a8e683ebb",
+          "name": "Track_1772121198607",
+          "type": "element",
+          "props": {},
+          "elements": [
+              {
+                  "id": "e-cc0401034d3e",
+                  "trackId": "t-948a8e683ebb",
+                  "type": "image",
+                  "s": 0,
+                  "e": 3,
+                  "props": {
+                      "src": "https://images.pexels.com/photos/358457/pexels-photo-358457.jpeg",
+                      "mediaFilter": "none"
+                  },
+                  "frame": {
+                      "size": [
+                          720,
+                          1080.2700675168792
+                      ],
+                      "x": 0,
+                      "y": 0
+                  },
+                  "frameEffects": [],
+                  "objectFit": "cover"
+              }
+          ]
+      },
+      {
+          "id": "t-85e232b36bdf",
+          "name": "Track_177212120267f",
+          "type": "element",
+          "props": {},
+          "elements": [
+              {
+                  "id": "e-b262ef2b4fff",
+                  "trackId": "t-85e232b36bdf",
+                  "type": "audio",
+                  "s": 0,
+                  "e": 1,
+                  "props": {
+                      "src": "https://cdn.pixabay.com/audio/2022/03/14/audio_782eeb590e.mp3"
                   }
-              ]
-          },
-          {
-              "id": "t-85e232b36bd0",
-              "name": "Track_1772121202675",
-              "type": "element",
-              "props": {},
-              "elements": [
-                  {
-                      "id": "e-b262ef2b4ff1",
-                      "trackId": "t-85e232b36bd0",
-                      "type": "effect",
-                      "s": 0,
-                      "e": 1,
-                      "props": {
-                          "effectKey": "vignette",
-                          "intensity": 1
-                      }
+              },
+                {
+                  "id": "e-b262ef2b4ffe",
+                  "trackId": "t-85e232b36bdf",
+                  "type": "audio",
+                  "s": 3,
+                  "e": 4,
+                  "props": {
+                      "src": "https://cdn.pixabay.com/audio/2022/03/14/audio_782eeb590e.mp3"
                   }
-              ]
-          }
-      ],
+              }
+          ]
+      }
+  ],
       "version": 6,
       "metadata": {}
   },
