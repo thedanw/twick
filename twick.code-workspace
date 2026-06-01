@@ -1,0 +1,38 @@
+{
+  "folders": [
+    { "name": "twick (root)", "path": "." }
+  ],
+  "settings": {
+    "files.eol": "\n",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.turbo": true,
+      "**/.pnpm-store": true
+    },
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/dist/**": true,
+      "**/.turbo/**": true,
+      "**/.pnpm-store/**": true
+    },
+    "eslint.workingDirectories": [
+      "packages/*",
+      "packages/cloud-functions/*",
+      "packages/agents/*"
+    ],
+    "editorconfig.enable": false
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "editorconfig.editorconfig"
+    ]
+  }
+}

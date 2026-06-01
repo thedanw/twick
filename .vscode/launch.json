@@ -1,0 +1,51 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dev: examples (Vite)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@twick/examples", "run", "dev"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Preview: examples (Vite preview on 3000)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@twick/examples", "run", "preview"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Dev: studio (Vite watch)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@twick/studio", "run", "dev"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug: cloud-export-video (renderer)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/packages/cloud-functions/export-video/core/renderer.js",
+      "cwd": "${workspaceFolder}/packages/cloud-functions/export-video",
+      "console": "integratedTerminal",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--experimental-vm-modules"]
+    },
+    {
+      "name": "Debug: cloud-transcript (transcriber)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/packages/cloud-functions/transcript/core/transcriber.js",
+      "cwd": "${workspaceFolder}/packages/cloud-functions/transcript",
+      "console": "integratedTerminal",
+      "runtimeExecutable": "node"
+    }
+  ]
+}

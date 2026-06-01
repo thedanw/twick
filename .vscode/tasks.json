@@ -1,0 +1,129 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "pnpm install",
+      "type": "shell",
+      "command": "pnpm install",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm build (all)",
+      "type": "shell",
+      "command": "pnpm build",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm build:studio",
+      "type": "shell",
+      "command": "pnpm build:studio",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm build:timeline",
+      "type": "shell",
+      "command": "pnpm build:timeline",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm build:canvas",
+      "type": "shell",
+      "command": "pnpm build:canvas",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm build:examples",
+      "type": "shell",
+      "command": "pnpm build:examples",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm build:cloud-functions",
+      "type": "shell",
+      "command": "pnpm build:cloud-functions",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm dev (all, watch)",
+      "type": "shell",
+      "command": "pnpm dev",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm dev:studio",
+      "type": "shell",
+      "command": "pnpm dev:studio",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm dev:examples",
+      "type": "shell",
+      "command": "pnpm dev:examples",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm preview",
+      "type": "shell",
+      "command": "pnpm preview",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm lint",
+      "type": "shell",
+      "command": "pnpm lint",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm lint:fix",
+      "type": "shell",
+      "command": "pnpm lint:fix",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm test",
+      "type": "shell",
+      "command": "pnpm test",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm test:smoke",
+      "type": "shell",
+      "command": "pnpm test:smoke",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm changeset",
+      "type": "shell",
+      "command": "pnpm changeset",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm clean:packages",
+      "type": "shell",
+      "command": "pnpm clean:packages",
+      "problemMatcher": []
+    },
+    {
+      "label": "pnpm rebuild",
+      "type": "shell",
+      "command": "pnpm rebuild",
+      "problemMatcher": []
+    },
+    {
+      "label": "git: fetch upstream",
+      "type": "shell",
+      "command": "git fetch upstream",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "AGENTS.md",
+    "AI_Builder.md",
+    "STYLE_GUIDE.md"
+  ],
+  "default_agent": "twick-package-dev",
+  "skills": {
+    "paths": [".opencode/skills"]
+  },
+  "permission": {
+    "bash": {
+      "git status": "allow",
+      "git log *": "allow",
+      "git diff *": "allow",
+      "git remote -v": "allow",
+      "pnpm *": "allow",
+      "node *": "allow",
+      "npm *": "allow",
+      "corepack *": "allow",
+      "npx *": "allow",
+      "echo *": "allow",
+      "cat *": "allow",
+      "ls *": "allow",
+      "dir *": "allow",
+      "*": "ask"
+    },
+    "edit": "ask",
+    "external_directory": "deny"
+  },
+  "command": {
+    "build": {
+      "description": "Build a Twick package (or all packages if no name). Usage: /build [package-name]",
+      "template": "Run the Twick build for a specific package or for the whole monorepo.\n\nIf the user provided a package name (e.g. `timeline`, `studio`, `effects`, `cloud-transcript`), use the matching `pnpm build:<name>` script from the root `package.json` (see CONTRIBUTING.md). If the name doesn't match an existing build script, fall back to `pnpm turbo run build --filter=@twick/<name>`.\n\nIf no package name was given, run `pnpm build` to build all packages.\n\nReport the build status clearly. If it fails, surface the first error and suggest a fix (check the style guide, missing peer dep, or stale `dist/` — try `pnpm clean:packages` then rebuild).\n\nRemember: do NOT push or commit. Build only."
+    },
+    "dev": {
+      "description": "Start the dev server for a Twick package in watch mode. Usage: /dev [package-name]",
+      "template": "Start a Twick package in development/watch mode.\n\nIf a package name is given (e.g. `studio`, `canvas`, `timeline`, `examples`), use the matching `pnpm dev:<name>` script from the root `package.json`. If the name doesn't match, use `pnpm turbo run dev --filter=@twick/<name>`.\n\nIf no name is given, ask which package the user wants to develop. Prefer `dev:examples` (it demos the studio) for a quick visual check, or `dev:studio` for the main package work.\n\nReminders:\n- These are long-running watch processes. Tell the user how to stop them (Ctrl+C).\n- `dev:examples` is the hosted demo; it usually serves on a local port (Vite default).\n- Do NOT combine multiple `dev:*` tasks; they conflict on ports."
+    },
+    "test": {
+      "description": "Run tests for a Twick package (or all if no name). Usage: /test [package-name]",
+      "template": "Run the Twick test suite.\n\nIf a package name is given, use `pnpm turbo run test --filter=@twick/<name>`. If no name, use `pnpm test` (runs all).\n\nFor the cloud-export-video smoke test, use `pnpm test:smoke`.\n\nReport which tests passed/failed with their counts. If a test fails, surface the assertion message and the most likely cause (recent change to the relevant package; check the git diff for that package)."
+    },
+    "lint": {
+      "description": "Lint the codebase (or one package). Usage: /lint [package-name] [--fix]",
+      "template": "Lint the Twick codebase.\n\nIf a package name is given, scope the lint to that package using `pnpm turbo run lint --filter=@twick/<name>`. If no name, run `pnpm lint` for everything.\n\nIf the user passed `--fix` (or says \"fix\"), run `pnpm lint:fix` (or `pnpm turbo run lint --fix --filter=@twick/<name>` for one package).\n\nTwick's lint config lives in each package's `eslint.config.*` and the root devDeps include `eslint@^9.25.0` and `typescript-eslint@^8.30.1`. See STYLE_GUIDE.md for the conventions the linter enforces."
+    },
+    "new-package": {
+      "description": "Scaffold a new @twick/* package following the Twick conventions. Usage: /new-package <kebab-name>",
+      "template": "Scaffold a new package in the Twick monorepo following the conventions in `CONTRIBUTING.md` §\"Adding a New Package\".\n\nThe user provides a kebab-case name (e.g. `my-feature`, `audio-effects`, `caption-exporter`).\n\nSteps:\n1. Confirm the name with the user if it's ambiguous (e.g. is it `audio-effects` or `effects-audio`?).\n2. Read `CONTRIBUTING.md` §\"Adding a New Package\" for the exact template.\n3. Read an existing leaf package for reference (e.g. `packages/media-utils/`) to copy the conventions.\n4. Create `packages/<name>/` with:\n   - `package.json` named `@twick/<camel-or-kebab-name>` (check existing package names for the convention — most are single words: `studio`, `canvas`, `timeline`; multi-word use kebab: `browser-render`, `live-player`).\n   - `tsconfig.json` extending the root base config.\n   - `vite.config.ts` mirroring an existing package.\n   - `src/index.ts` re-exporting the public API (empty placeholder is fine).\n   - `.eslintrc` or `eslint.config.*` matching the convention in the nearest sibling package (e.g. `packages/media-utils/`).\n5. Add a `build:<name>` and `dev:<name>` script to the root `package.json` (use the existing pattern: `turbo run build --filter=@twick/<name>`).\n6. Verify it builds: `pnpm build:<name>`.\n7. Report what was created and any choices you made.\n\nDo NOT add the package to `pnpm-workspace.yaml` — the wildcards already cover `packages/*`.\n\nDo NOT publish, commit, or push."
+    },
+    "sync-upstream": {
+      "description": "Sync this fork with the upstream ncounterspecialist/twick. Usage: /sync-upstream",
+      "template": "Sync the user's Twick fork (`thedanw/twick`) with the upstream (`ncounterspecialist/twick`).\n\nWorkflow (load the `twick-sync-upstream` skill first for the full procedure):\n\n1. `git fetch upstream`\n2. `git status` — refuse to proceed if the working tree is dirty. Ask the user to commit, stash, or discard first.\n3. `git checkout main`\n4. `git merge --ff-only upstream/main` — fast-forward only. If it cannot fast-forward, the user has diverged; ask before doing anything else.\n5. `git push origin main` — push the synced main to the fork.\n6. Report the new HEAD SHA and how many commits were brought in.\n\nNever force-push. Never rewrite history. If a fast-forward is not possible, stop and explain."
+    },
+    "release": {
+      "description": "Prepare a Twick release: create a changeset entry, then version + publish. Usage: /release [patch|minor|major]",
+      "template": "Walk the user through a Twick release using changesets.\n\nLoad the `twick-publish` skill first.\n\n1. Confirm the bump level (patch / minor / major). Default to minor if not specified. Check the recent `git log` for context.\n2. Run `pnpm changeset` interactively (or with `-- --help` to show options). The user picks the affected packages and the bump level.\n3. Show the generated `.changeset/<random>.md` file and ask the user to confirm the content.\n4. Do NOT run `pnpm version` or `pnpm release` yet. The user will trigger those after review.\n5. Remind the user: PR the changeset to `main` (or to their feature branch), get review, merge, then run `pnpm version` (which consumes the changeset and bumps versions) followed by `pnpm release` (which publishes to npm). The full release script is `turbo run build && changeset publish`.\n\nSee CONTRIBUTING.md and the root `package.json` `scripts.release` for the canonical flow."
+    }
+  }
+}

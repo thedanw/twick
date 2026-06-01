@@ -27,7 +27,10 @@ pnpm-debug.log*
 
 # IDE specific files
 .idea
-.vscode
+.vscode/**
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
 *.swp
 *.swo
 
