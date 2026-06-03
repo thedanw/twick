@@ -1,0 +1,331 @@
+/**
+ * New Light Studio Theme for Twick SDK
+ *
+ * A non-breaking CSS override layer that aligns Twick's default purple theme
+ * with the New Light Studio design system. Load this file AFTER studio.css
+ * to apply the theme.
+ *
+ * Design spec: newlightstudio/.agents/rules/design.md
+ *
+ * Usage:
+ *   import '@twick/studio/dist/studio.css';
+ *   import '@twick/studio/dist/themes/new-light-studio.css';
+ *
+ * Or via link tag (after studio.css):
+ *   <link rel="stylesheet" href="studio.css">
+ *   <link rel="stylesheet" href="themes/new-light-studio.css">
+ *
+ * This file is safe to use across upstream updates — it only adds/overrides
+ * properties, never modifies studio.css source.
+ */
+
+/* ═══════════════════════════════════════════
+   1. DESIGN TOKENS (CSS Custom Properties)
+   ═══════════════════════════════════════════
+   Remap Twick's purple tokens to New Light Orange.
+   Because these are CSS custom properties, overriding them here
+   automatically propagates to every element that uses var(--color-purple-*).
+*/
+:root {
+  /* New Light Orange accent palette */
+  --color-purple-100: #fff1e5;
+  --color-purple-200: #ffd7b8;
+  --color-purple-300: #ffbc8a;
+  --color-purple-400: #ffa25c;
+  --color-purple-500: #FF7300;
+  --color-purple-600: #e66800;
+  --color-purple-700: #cc5c00;
+  --color-purple-800: #b35100;
+  --color-purple-900: #994500;
+  --color-purple-muted: rgba(255, 115, 0, 0.15);
+
+  /* Extended tokens for direct-use overrides below */
+  --nl-accent: #FF7300;
+  --nl-accent-hover: #e66800;
+  --nl-accent-glow: rgba(255, 115, 0, 0.25);
+  --nl-accent-glow-strong: rgba(255, 115, 0, 0.35);
+  --nl-accent-muted: rgba(255, 115, 0, 0.15);
+
+  /* Background grayscale progression (design spec) */
+  --nl-bg-sidebar: #171717;
+  --nl-bg-tool-titlebar: #1E1E1E;
+  --nl-bg-panel: #262626;
+  --nl-bg-main-titlebar: #323232;
+  --nl-bg-main: #3f3f3f;
+}
+
+/* ═══════════════════════════════════════════
+   2. FONT HIERARCHY
+   ═══════════════════════════════════════════
+   Headings use Inter Display. Body uses Inter.
+   Inter Display is loaded by the host app (newlightstudio/index.css).
+*/
+.panel-title,
+.properties-title,
+.property-title,
+.twick-modal-title,
+h1, h2, h3, h4 {
+  font-family: 'Inter Display', 'Inter', sans-serif;
+}
+
+/* ═══════════════════════════════════════════
+   3. REMOVE ALL-CAPS (design system ban)
+   ═══════════════════════════════════════════ */
+.properties-title,
+.property-label {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+/* ═══════════════════════════════════════════
+   4. BORDER RADIUS — SHARP CORNERS (max 2px)
+   ═══════════════════════════════════════════ */
+.panel-container,
+.captions-panel-item,
+.captions-panel-empty,
+.property-section,
+.media-item,
+.icon-item,
+.emoji-item,
+.media-list-icon,
+.icon-action-btn,
+.btn-danger,
+.twick-modal-content,
+.file-input-label,
+.property-input,
+.emoji-category-chip,
+.effect-preview-card,
+.text-style-card,
+.media-action-btn,
+.form-btn,
+.toolbar-btn,
+.props-toolbar-btn,
+.tippy-box,
+.select-dark,
+.color-picker,
+.color-text,
+.btn-icon,
+.btn-ghost,
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.input,
+.properties-size-readonly {
+  border-radius: 2px !important;
+}
+
+/* ═══════════════════════════════════════════
+   4b. BUTTON FLAT COLORS (no gradients)
+   ═══════════════════════════════════════════ */
+.btn-primary {
+  background: var(--nl-accent) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-primary:hover {
+  background: var(--nl-accent-hover) !important;
+}
+
+.btn-ghost {
+  background: transparent !important;
+  color: var(--color-gray-300) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+}
+
+.btn-danger {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-danger:hover {
+  background: #b91c1c !important;
+}
+
+.btn-secondary {
+  background: var(--color-neutral-700) !important;
+  color: var(--color-gray-100) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-secondary:hover {
+  background: var(--color-neutral-600) !important;
+}
+
+.btn-outline {
+  background: transparent !important;
+  color: var(--nl-accent) !important;
+  border: 1px solid var(--nl-accent) !important;
+  box-shadow: none !important;
+}
+
+.btn-outline:hover {
+  background: var(--nl-accent) !important;
+  color: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════
+   4c. FORM FIELDS
+   ═══════════════════════════════════════════ */
+.input {
+  border-radius: 2px !important;
+  background: var(--color-neutral-800) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--color-gray-100) !important;
+}
+
+.input:focus {
+  border-color: var(--nl-accent) !important;
+  box-shadow: 0 0 0 1px var(--nl-accent-muted) !important;
+  outline: none !important;
+}
+
+.properties-size-readonly {
+  border-radius: 2px !important;
+}
+
+/* ═══════════════════════════════════════════
+   5. BUTTON TACTILE FEEDBACK (-1px Y on :active)
+   ═══════════════════════════════════════════ */
+.toolbar-btn:active,
+.btn-primary:active,
+.btn-secondary:active,
+.btn-outline:active,
+.props-toolbar-btn:active,
+.media-action-btn:active,
+.form-btn:active {
+  transform: translateY(1px) !important;
+}
+
+/* ═══════════════════════════════════════════
+   6. FOCUS RING COLORS (New Light Orange)
+   ═══════════════════════════════════════════ */
+.property-input:focus,
+.color-text:focus,
+.select-dark:focus {
+  border-color: var(--nl-accent) !important;
+  box-shadow: 0 0 0 1px var(--nl-accent-muted) !important;
+  outline: none !important;
+}
+
+.btn:focus-visible,
+.toolbar-btn:focus-visible,
+.props-toolbar-btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--nl-accent-muted) !important;
+  outline: none !important;
+}
+
+/* ═══════════════════════════════════════════
+   7. BACKDROP FILTER REMOVAL (no glassmorphism)
+   ═══════════════════════════════════════════ */
+.properties-panel,
+.panel-container,
+.sidebar,
+.header,
+.toolbar,
+.accordion-item {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ═══════════════════════════════════════════
+   8. PANEL BACKGROUND GRAY PROGRESSION
+   ═══════════════════════════════════════════ */
+.panel-container,
+.captions-panel-item,
+.twick-modal-content {
+  background: var(--nl-bg-tool-titlebar) !important;
+}
+
+.property-section {
+  background: var(--nl-bg-tool-titlebar) !important;
+}
+
+.properties-header {
+  background: var(--nl-bg-sidebar) !important;
+}
+
+.sidebar {
+  background: var(--nl-bg-sidebar) !important;
+}
+
+.header,
+.toolbar {
+  background: rgba(23, 23, 23, 0.98) !important;
+}
+
+/* ═══════════════════════════════════════════
+   9. EMOJI CATEGORY ACTIVE STATE
+   ═══════════════════════════════════════════ */
+.emoji-category-chip-active {
+  border-color: var(--nl-accent) !important;
+  background: var(--nl-accent-muted) !important;
+  color: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════
+   10. PROPERTY INDICATOR DOT
+   ═══════════════════════════════════════════ */
+.property-indicator {
+  background-color: var(--nl-accent) !important;
+}
+
+/* ═══════════════════════════════════════════
+   11. BODY BACKGROUND (remove radial gradient)
+   ═══════════════════════════════════════════ */
+body {
+  background: var(--color-neutral-900) !important;
+}
+
+/* ═══════════════════════════════════════════
+   12. EMPTY STATE ICON COLOR
+   ═══════════════════════════════════════════ */
+.empty-state-icon {
+  color: var(--nl-accent-muted) !important;
+}
+
+/* ═══════════════════════════════════════════
+   13. ASPECT RATIO BUTTON HOVER / ACTIVE
+   ═══════════════════════════════════════════ */
+.aspect-ratio-btn:hover {
+  color: var(--nl-accent) !important;
+}
+
+/* ═══════════════════════════════════════════
+   14. CHECKBOX ACCENT
+   ═══════════════════════════════════════════ */
+.checkbox-purple:checked {
+  background: var(--nl-accent) !important;
+  border-color: var(--nl-accent) !important;
+}
+
+/* ═══════════════════════════════════════════
+   15. SLIDER THUMB GLOW REMOVAL
+   ═══════════════════════════════════════════ */
+.slider-thumb::-webkit-slider-thumb:hover {
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* ═══════════════════════════════════════════
+   16. PROPS TOOLTIP BORDER RADIUS
+   ═══════════════════════════════════════════ */
+.toolbar-btn[data-tooltip]::after {
+  border-radius: 2px !important;
+}
+
+/* ═══════════════════════════════════════════
+   17. SCROLLBAR THUMB HOVER (orange accent)
+   ═══════════════════════════════════════════ */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nl-accent) !important;
+}
