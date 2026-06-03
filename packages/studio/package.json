@@ -10,17 +10,19 @@
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./dist/studio.css": "./dist/studio.css"
+    "./dist/studio.css": "./dist/studio.css",
+    "./dist/themes/new-light-studio.css": "./dist/themes/new-light-studio.css"
   },
   "sideEffects": [
     "**/*.css"
   ],
   "license": "https://github.com/ncounterspecialist/twick/blob/main/LICENSE.md",
   "files": [
-    "dist"
+    "dist",
+    "dist/themes"
   ],
   "scripts": {
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node -e \"require('fs').cpSync('src/themes','dist/themes',{recursive:true})\"",
     "dev": "vite build --watch",
     "lint": "eslint src/",
     "clean": "rimraf .turbo node_modules dist",
