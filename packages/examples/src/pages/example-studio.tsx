@@ -9,6 +9,7 @@ import {
   type MediaItem,
 } from "@twick/studio";
 import "@twick/studio/dist/studio.css";
+import "@twick/studio/dist/themes/new-light-studio.css";
 import { useState } from "react";
 
 const VIDEO_SIZE = {
