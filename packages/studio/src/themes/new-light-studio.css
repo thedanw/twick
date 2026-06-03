@@ -104,7 +104,93 @@ h1, h2, h3, h4 {
 .select-dark,
 .color-picker,
 .color-text,
-.btn-icon {
+.btn-icon,
+.btn-ghost,
+.btn-primary,
+.btn-secondary,
+.btn-outline,
+.input,
+.properties-size-readonly {
+  border-radius: 2px !important;
+}
+
+/* ═══════════════════════════════════════════
+   4b. BUTTON FLAT COLORS (no gradients)
+   ═══════════════════════════════════════════ */
+.btn-primary {
+  background: var(--nl-accent) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-primary:hover {
+  background: var(--nl-accent-hover) !important;
+}
+
+.btn-ghost {
+  background: transparent !important;
+  color: var(--color-gray-300) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+}
+
+.btn-danger {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-danger:hover {
+  background: #b91c1c !important;
+}
+
+.btn-secondary {
+  background: var(--color-neutral-700) !important;
+  color: var(--color-gray-100) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.btn-secondary:hover {
+  background: var(--color-neutral-600) !important;
+}
+
+.btn-outline {
+  background: transparent !important;
+  color: var(--nl-accent) !important;
+  border: 1px solid var(--nl-accent) !important;
+  box-shadow: none !important;
+}
+
+.btn-outline:hover {
+  background: var(--nl-accent) !important;
+  color: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════
+   4c. FORM FIELDS
+   ═══════════════════════════════════════════ */
+.input {
+  border-radius: 2px !important;
+  background: var(--color-neutral-800) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--color-gray-100) !important;
+}
+
+.input:focus {
+  border-color: var(--nl-accent) !important;
+  box-shadow: 0 0 0 1px var(--nl-accent-muted) !important;
+  outline: none !important;
+}
+
+.properties-size-readonly {
   border-radius: 2px !important;
 }
 
@@ -219,8 +305,8 @@ body {
    14. CHECKBOX ACCENT
    ═══════════════════════════════════════════ */
 .checkbox-purple:checked {
-  background: linear-gradient(135deg, var(--nl-accent), var(--nl-accent-hover)) !important;
-  border-color: var(--color-neutral-400) !important;
+  background: var(--nl-accent) !important;
+  border-color: var(--nl-accent) !important;
 }
 
 /* ═══════════════════════════════════════════
