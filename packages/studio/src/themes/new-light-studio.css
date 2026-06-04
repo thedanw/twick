@@ -52,6 +52,22 @@
   --nl-bg-panel: #262626;
   --nl-bg-main-titlebar: #323232;
   --nl-bg-main: #3f3f3f;
+
+  /* Accent color overrides (purple → orange) */
+  --color-accent-primary: #FF7300;
+  --color-accent-hover: #e66800;
+  --color-accent-muted: rgba(255, 115, 0, 0.2);
+
+  /* Neutral grays (no warm/cool tint) */
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
 }
 
 /* ═══════════════════════════════════════════
