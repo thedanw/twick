@@ -111,6 +111,11 @@ import { CloudMediaUpload } from "./components/shared/cloud-media-upload";
 import { DimensionButton, DimensionModal } from "./plugins/dimensions";
 
 /**
+ * Zoom/Pan plugin components and hook for workspace navigation.
+ */
+import { ZoomProvider, ZoomViewportWrapper, ZoomControls, useWorkspaceZoom } from "./plugins/zoom";
+
+/**
  * Hook for cloud media upload (S3 presigned or GCS server-side).
  */
 import { useCloudMediaUpload } from "./hooks/use-cloud-media-upload";
@@ -135,6 +140,12 @@ export {
   DimensionButton,
   /** Modal for setting project dimensions */
   DimensionModal,
+  /** Provider for workspace zoom state */
+  ZoomProvider,
+  /** Wrapper for enabling zoom/pan transformation */
+  ZoomViewportWrapper,
+  /** Zoom controls group (zoom in/out, percentage, reset) */
+  ZoomControls,
 };
 
 // Panel exports for embedding or replacement
@@ -188,6 +199,8 @@ export {
   useCloudMediaUpload,
   /** Hook for browser screen recording */
   useScreenRecorder,
+  /** Hook for workspace zoom/pan state */
+  useWorkspaceZoom,
 };
 
 // Shared components for custom panels
