@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "tsc --noEmit && vite build && node -e \"require('fs').cpSync('src/themes','dist/themes',{recursive:true})\"",
-    "dev": "vite build --watch",
+    "dev": "node -e \"require('fs').mkdirSync('dist/themes',{recursive:true});require('fs').cpSync('src/themes','dist/themes',{recursive:true})\" && vite build --watch",
     "lint": "eslint src/",
     "clean": "rimraf .turbo node_modules dist",
     "docs": "typedoc --options ./typedoc.json",
