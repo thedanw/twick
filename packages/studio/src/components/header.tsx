@@ -19,6 +19,7 @@
 import type { Size } from "@twick/timeline";
 import { Save, Download, Clapperboard, File, Plus } from "lucide-react";
 import { DimensionButton } from "../plugins/dimensions";
+import { ZoomControls } from "../plugins/zoom";
 
 interface StudioHeaderProps {
   setVideoResolution: (resolution: Size) => void;
@@ -46,6 +47,7 @@ export const StudioHeader = ({
       </div>
       <div className="flex-container" style={{ gap: "8px" }}>
         <DimensionButton setVideoResolution={setVideoResolution} />
+        <ZoomControls />
         <div className="header-separator"></div>
       </div>
       <div className="flex-container">
