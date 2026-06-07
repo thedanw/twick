@@ -106,6 +106,11 @@ import { ScriptPanel } from "./components/panel/script-panel";
 import { CloudMediaUpload } from "./components/shared/cloud-media-upload";
 
 /**
+ * Self-contained dimension selector button with modal.
+ */
+import { DimensionButton, DimensionModal } from "./plugins/dimensions";
+
+/**
  * Hook for cloud media upload (S3 presigned or GCS server-side).
  */
 import { useCloudMediaUpload } from "./hooks/use-cloud-media-upload";
@@ -126,6 +131,10 @@ export {
   Toolbar,
   /** Studio top bar with controls */
   StudioHeader,
+  /** Self-contained dimension selector button with modal */
+  DimensionButton,
+  /** Modal for setting project dimensions */
+  DimensionModal,
 };
 
 // Panel exports for embedding or replacement
