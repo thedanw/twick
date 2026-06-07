@@ -405,7 +405,9 @@ export {
   getCurrentElements,
   isTrackId,
   isElementId,
-  TIMELINE_ELEMENT_TYPE
+  TIMELINE_ELEMENT_TYPE,
+  formatTimeWithFrames,
+  formatTimeSimple
 } from "@twick/timeline";
 
 /**
