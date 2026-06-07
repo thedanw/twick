@@ -42,11 +42,14 @@ export const PlayerManager = ({
   playerProps,
   canvasMode,
   canvasConfig,
+  viewportWrapper,
 }: {
   videoProps: { width: number; height: number, backgroundColor?: string };
   playerProps?: { quality?: number },
   canvasMode: boolean;
   canvasConfig?: CanvasConfig;
+  /** Optional wrapper for the main viewport area (used for zoom/pan plugins) */
+  viewportWrapper?: (children: React.ReactNode) => React.ReactNode;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -176,7 +179,7 @@ export const PlayerManager = ({
     }
   };
 
-  return (
+  const content = (
     <div
       className="twick-editor-container"
       style={{
@@ -231,6 +234,12 @@ export const PlayerManager = ({
           <canvas ref={canvasRef} className="twick-editor-canvas" />
         </div>
       )}
+    </div>
+  );
+
+  return (
+    <>
+      {viewportWrapper ? viewportWrapper(content) : content}
       {contextMenu && (
         <CanvasContextMenu
           x={contextMenu.x}
@@ -244,6 +253,6 @@ export const PlayerManager = ({
           onClose={closeContextMenu}
         />
       )}
-    </div>
+    </>
   );
 };

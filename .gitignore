@@ -44,6 +44,9 @@ pnpm-debug.log*
 # Tarballs
 **/*.tgz
 
+# Agent workspace
+.agents/
+
 
 # Documentation
 packages/*/docs/

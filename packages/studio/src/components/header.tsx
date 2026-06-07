@@ -17,8 +17,8 @@
  */
 
 import type { Size } from "@twick/timeline";
-import { Save, Download, Clapperboard, File, Plus, RectangleVertical, RectangleHorizontal } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Save, Download, Clapperboard, File, Plus } from "lucide-react";
+import { ZoomControls } from "../plugins/zoom";
 
 interface StudioHeaderProps {
   setVideoResolution: (resolution: Size) => void;
@@ -36,42 +36,6 @@ export const StudioHeader = ({
   onSaveProject,
   onExportVideo,
 }: StudioHeaderProps) => {
-  const [orientation, setOrientation] = useState<"horizontal" | "vertical">(
-    "vertical"
-  );
-
-  useEffect(() => {
-    const orientation = localStorage.getItem("orientation");
-    if (orientation) {
-      setOrientation(orientation as "horizontal" | "vertical");
-    }
-  }, []);
-
-  const handleOrientationChange = (nextOrientation: "horizontal" | "vertical") => {
-    if (nextOrientation === orientation) return;
-
-    const confirmMessage =
-      "Changing orientation will create a new project with the new resolution. Do you want to continue?";
-
-    if (!window.confirm(confirmMessage)) {
-      return;
-    }
-
-    // Create a fresh project for the new resolution
-    onNewProject();
-    setOrientation(nextOrientation);
-  };
-
-  useEffect(() => {
-    if (orientation === "horizontal") {
-      localStorage.setItem("orientation", "horizontal");
-      setVideoResolution({ width: 1280, height: 720 });
-    } else {
-      localStorage.setItem("orientation", "vertical");
-      setVideoResolution({ width: 720, height: 1280 });
-    }
-  }, [orientation]);
-
   return (
     <header className="header">
       <div className="flex-container">
@@ -79,26 +43,10 @@ export const StudioHeader = ({
         <h1 className="text-gradient">
           Twick Studio
         </h1>
+      </div>
+      <div className="flex-container" style={{ gap: "8px" }}>
+        <ZoomControls />
         <div className="header-separator"></div>
-        <div className="flex-container" style={{ gap: "0.5rem" }}>
-          <span className="text-sm opacity-80">Orientation</span>
-          <button
-            className={`btn-ghost ${orientation === "vertical" ? "btn-primary" : ""}`}
-            title="Portrait (720×1280)"
-            onClick={() => handleOrientationChange("vertical")}
-          >
-            <RectangleVertical className="icon-sm" />
-
-          </button>
-          <button
-            className={`btn-ghost ${orientation === "horizontal" ? "btn-primary" : ""}`}
-            title="Landscape (1280×720)"
-            onClick={() => handleOrientationChange("horizontal")}
-          >
-            <RectangleHorizontal className="icon-sm" />
-
-          </button>
-        </div>
       </div>
       <div className="flex-container">
         <button

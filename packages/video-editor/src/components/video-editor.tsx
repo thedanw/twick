@@ -140,6 +140,8 @@ export interface VideoEditorProps {
   defaultPlayControls?: boolean;
   /** Editor configuration including video properties and mode settings */
   editorConfig: VideoEditorConfig;
+  /** Optional wrapper for the main viewport area (used for zoom/pan plugins) */
+  viewportWrapper?: (children: React.ReactNode) => React.ReactNode;
 }
 
 /**
@@ -192,6 +194,7 @@ const VideoEditor: React.FC<VideoEditorProps> = ({
   rightPanel,
   bottomPanel,
   editorConfig,
+  viewportWrapper,
   defaultPlayControls = true,
 }) => {
   const zoomConfig =
@@ -215,9 +218,10 @@ const VideoEditor: React.FC<VideoEditorProps> = ({
         playerProps={editorConfig.playerProps}
         canvasMode={editorConfig.canvasMode ?? true}
         canvasConfig={editorConfig.canvasConfig}
+        viewportWrapper={viewportWrapper}
       />
     ),
-    [editorConfig]
+    [editorConfig, viewportWrapper]
   );
   return (
     <div className="twick-editor-main-container">
