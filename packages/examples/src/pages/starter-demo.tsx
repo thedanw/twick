@@ -6,6 +6,7 @@ import {
   TwickStudio,
 } from "@twick/studio";
 import "@twick/studio/dist/studio.css";
+import "@twick/studio/dist/themes/new-light-studio.css";
 
 export default function StarterDemo() {
   return (

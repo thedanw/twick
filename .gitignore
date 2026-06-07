@@ -37,6 +37,9 @@ pnpm-debug.log*
 # TypeScript
 *.tsbuildinfo
 
+# Agent config
+.agents/
+
 # Cache
 .cache
 .temp
