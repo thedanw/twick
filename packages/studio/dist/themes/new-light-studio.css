@@ -280,6 +280,10 @@ h1, h2, h3, h4 {
   background: rgba(23, 23, 23, 0.98) !important;
 }
 
+.properties-panel, .player-controls, .studio-left-panel {
+  background: rgba(20, 20, 20, 0.98);;
+}
+
 /* ═══════════════════════════════════════════
    9. EMOJI CATEGORY ACTIVE STATE
    ═══════════════════════════════════════════ */
@@ -344,4 +348,9 @@ body {
    ═══════════════════════════════════════════ */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--nl-accent) !important;
+}
+
+.prop-content {
+  padding:0px;
+
 }
